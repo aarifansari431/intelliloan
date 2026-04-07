@@ -1,4 +1,3 @@
-<!-- backend/pom.xml -->
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -21,12 +20,13 @@
 
     <modules>
         <module>intelliloan-common</module>
-        <module>intelliloan-auth</module>
+
         <module>intelliloan-loan</module>
-        <module>intelliloan-risk</module>
-        <module>intelliloan-document</module>
-        <module>intelliloan-ai</module>
-        <module>intelliloan-notification</module>
+<!--        <module>intelliloan-auth</module>-->
+<!--        <module>intelliloan-risk</module>-->
+<!--        <module>intelliloan-document</module>-->
+<!--        <module>intelliloan-ai</module>-->
+<!--        <module>intelliloan-notification</module>-->
     </modules>
 
     <properties>
@@ -127,6 +127,30 @@
                             <path>
                                 <groupId>org.projectlombok</groupId>
                                 <artifactId>lombok</artifactId>
+                            </path>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <annotationProcessorPaths>
+                            <!-- MapStruct MUST come before Lombok -->
+                            <path>
+                                <groupId>org.mapstruct</groupId>
+                                <artifactId>mapstruct-processor</artifactId>
+                                <version>${mapstruct.version}</version>
+                            </path>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                            </path>
+                            <!-- Bridge between Lombok and MapStruct -->
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok-mapstruct-binding</artifactId>
+                                <version>0.2.0</version>
                             </path>
                         </annotationProcessorPaths>
                     </configuration>
